@@ -17,6 +17,8 @@ public class Bien implements Serializable{
 	private Long nbpiece;
 	private String categorie;
 	private int idpers;
+	@OneToMany(mappedBy = "bien",fetch = FetchType.LAZY)
+	private Collection<Image> images;
 
 	public Bien(int idbiens, String categorie, Date date, String description, Long nbpiece,  String nom, double prix, int idpers) {
 		super();
@@ -96,5 +98,13 @@ public class Bien implements Serializable{
 
 	public void setIdpers(int idpers) {
 		this.idpers = idpers;
+	}
+
+	public Collection<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(Collection<Image> images) {
+		this.images = images;
 	}
 }

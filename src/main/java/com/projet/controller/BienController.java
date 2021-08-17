@@ -18,7 +18,6 @@ public class BienController {
     }
 
     @PostMapping("/bien/add")
-
     public Bien addBien(@RequestBody Bien p){
         return bienRepo.save(p);
     }

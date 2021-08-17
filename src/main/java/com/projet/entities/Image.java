@@ -15,6 +15,9 @@ public class Image implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idImage;
 	private String url;
+	@ManyToOne
+	@JoinColumn(name = "idBien")
+	private Bien bien;
 	
 	public Image() {
 		super();
@@ -36,4 +39,11 @@ public class Image implements Serializable{
 		this.url = url;
 	}
 
+	public Bien getBien() {
+		return bien;
+	}
+
+	public void setBien(Bien bien) {
+		this.bien = bien;
+	}
 }
