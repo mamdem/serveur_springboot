@@ -27,11 +27,10 @@ public class Personne implements Serializable{
 
 	public Personne() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Personne(String login, String pwd, String nom, String prenom, String adresse, String sexe, String email,
-			String telephone, String nationalite,int type) {
+					String telephone, String nationalite,int type) {
 		super();
 		this.login = login;
 		this.pwd = pwd;

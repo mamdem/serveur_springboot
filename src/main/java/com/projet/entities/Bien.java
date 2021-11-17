@@ -9,18 +9,17 @@ import javax.persistence.*;
 @Entity
 public class Bien implements Serializable{
 	@Id
-	private int idbiens;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idbiens;
 	private String nom;
 	private String description;
 	private double prix;
 	private Date date;
 	private Long nbpiece;
 	private String categorie;
-	private int idpers;
-	@OneToMany(mappedBy = "bien",fetch = FetchType.LAZY)
-	private Collection<Image> images;
+	private Long idpers;
 
-	public Bien(int idbiens, String categorie, Date date, String description, Long nbpiece,  String nom, double prix, int idpers) {
+	public Bien(Long idbiens, String categorie, Date date, String description, Long nbpiece,  String nom, double prix, Long idpers) {
 		super();
 		this.idbiens = idbiens;
 		this.nom = nom;
@@ -36,11 +35,11 @@ public class Bien implements Serializable{
 		super();
 	}
 
-	public int getIdbiens() {
+	public Long getIdbiens() {
 		return idbiens;
 	}
 
-	public void setIdbiens(int idbiens) {
+	public void setIdbiens(Long idbiens) {
 		this.idbiens = idbiens;
 	}
 
@@ -92,19 +91,11 @@ public class Bien implements Serializable{
 		this.categorie = categorie;
 	}
 
-	public int getIdpers() {
+	public Long getIdpers() {
 		return idpers;
 	}
 
-	public void setIdpers(int idpers) {
+	public void setIdpers(Long idpers) {
 		this.idpers = idpers;
-	}
-
-	public Collection<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(Collection<Image> images) {
-		this.images = images;
 	}
 }

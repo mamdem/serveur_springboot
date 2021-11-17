@@ -5,8 +5,11 @@ import com.projet.entities.Bien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class BienController {
+
     @Autowired
     private IBien bienRepo;
 
@@ -21,5 +24,15 @@ public class BienController {
     public Bien addBien(@RequestBody Bien p){
         return bienRepo.save(p);
     }
-}
 
+    @GetMapping("/bien/getBienByIdpers")
+    public List<Bien> getBienByIdpers(@RequestParam Long idpers){
+        return bienRepo.getAllByIdpers(idpers);
+    }
+
+    @GetMapping("bien/getBienByIdbiens")
+    public Bien getBienByIdbiens(@RequestParam Long idbiens){
+        return bienRepo.getBienByIdbiens(idbiens);
+    }
+
+}
