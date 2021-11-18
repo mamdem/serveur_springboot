@@ -1,13 +1,15 @@
 package com.projet.doa;
 import com.projet.entities.Personne;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource
+
 @Repository
-public interface IPersonne extends CrudRepository<Personne, Long> {
+public interface IPersonne extends JpaRepository<Personne, Long> {
 
+    @Query(value = "select * from personne where login = ? and pwd= ?", nativeQuery = true)
     Personne findPersonneByLoginAndPwd(String login, String pwd);
-
+    @Query(value = "select * from personne where idpers = ?", nativeQuery = true)
+    Personne findPersonneById(Long idpers);
 }
