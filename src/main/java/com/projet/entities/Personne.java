@@ -1,7 +1,13 @@
 package com.projet.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,7 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Personne implements Serializable{
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@ToString
+public class Personne{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idpers;
@@ -25,110 +35,9 @@ public class Personne implements Serializable{
 	private String nationalite;
 	private int type;
 
-	public Personne() {
-		super();
-	}
+	@OneToMany(mappedBy = "personne")
+	private  List<Bien> bienList;
 
-	public Personne(String login, String pwd, String nom, String prenom, String adresse, String sexe, String email,
-					String telephone, String nationalite,int type) {
-		super();
-		this.login = login;
-		this.pwd = pwd;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.sexe = sexe;
-		this.email = email;
-		this.telephone = telephone;
-		this.nationalite = nationalite;
-		this.type=type;
-	}
-
-	public Long getIdpers() {
-		return idpers;
-	}
-
-	public void setIdpers(Long idpers) {
-		this.idpers = idpers;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
-	public String getSexe() {
-		return sexe;
-	}
-
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getNationalite() {
-		return nationalite;
-	}
-
-	public void setNationalite(String nationalite) {
-		this.nationalite = nationalite;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
+	@OneToMany(mappedBy = "personne")
+	private List<Location> locationList;
 }

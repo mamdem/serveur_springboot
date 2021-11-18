@@ -27,7 +27,7 @@ public class BienController {
 
     @GetMapping("/bien/getBienByIdpers")
     public List<Bien> getBienByIdpers(@RequestParam Long idpers){
-        return bienRepo.getAllByIdpers(idpers);
+        return bienRepo.getBienByIdpers(idpers);
     }
 
     @GetMapping("bien/getBienByIdbiens")

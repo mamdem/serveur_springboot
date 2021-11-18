@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Image implements Serializable{
+public class Image{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idImage;
