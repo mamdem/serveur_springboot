@@ -24,6 +24,7 @@ public class Bien{
 	private String nom;
 	private String description;
 	private double prix;
+	private String adresse;
 	private Date date;
 	private Long nbpiece;
 	private String categorie;
@@ -34,6 +35,5 @@ public class Bien{
 
 	@OneToMany(mappedBy = "bien")
 	private List<Location> locationList;
-
 
 }
