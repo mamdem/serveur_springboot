@@ -38,6 +38,5 @@ public class Personne{
 	@OneToMany(mappedBy = "personne")
 	private  List<Bien> bienList;
 
-	@OneToMany(mappedBy = "personne")
-	private List<Location> locationList;
+
 }
