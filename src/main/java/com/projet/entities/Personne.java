@@ -34,9 +34,4 @@ public class Personne{
 	private String telephone;
 	private String nationalite;
 	private int type;
-
-	@OneToMany(mappedBy = "personne")
-	private  List<Bien> bienList;
-
-
 }

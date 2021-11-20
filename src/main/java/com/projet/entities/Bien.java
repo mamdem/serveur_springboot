@@ -32,8 +32,4 @@ public class Bien{
 	@ManyToOne
 	@JoinColumn(name = "idpers")
 	private Personne personne;
-
-	@OneToMany(mappedBy = "bien")
-	private List<Location> locationList;
-
 }
