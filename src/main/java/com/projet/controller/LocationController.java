@@ -7,6 +7,8 @@ import com.projet.entities.Location;
 import com.projet.entities.Personne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -16,6 +18,8 @@ import java.net.URI;
 public class LocationController {
     @Autowired
     private ILocation locationRepo;
+    @Autowired
+    public JavaMailSender emailSender;
 
     @GetMapping(path = "/locations/all")
     public @ResponseBody
@@ -31,6 +35,16 @@ public class LocationController {
             return ResponseEntity.noContent().build();
         else
         {
+            // Create a Simple MailMessage.
+            SimpleMailMessage message = new SimpleMailMessage();
+
+            message.setTo(location1.getBien().getPersonne().getEmail());
+            message.setSubject("Test Simple Email");
+            message.setText("Une personne vient de louer votre bien");
+
+            // Send Message!
+            this.emailSender.send(message);
+
             URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest()
                     .path("{/id}")

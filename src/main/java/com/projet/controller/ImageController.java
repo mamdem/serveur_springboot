@@ -21,22 +21,22 @@ public class ImageController {
 	@Autowired
     IImage imageRepository;
 
-//    @PostMapping(path ="/images/add")
-//    public Image addImage(@RequestParam("file")MultipartFile file, @RequestParam("bien")Bien bien) throws IOException {
-//        Image img = new Image();
-//
-//        String uploadDir = "images/";
-//
-//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//        img.setUrl(fileName);
-//        img.setBien(bien);
-//
-//        imageRepository.save(img);
-//
-//        FileUploadUtil.saveFile(uploadDir, fileName, file);
-//
-//        return img;
-//    }
+    @PostMapping(path ="/images/local/add")
+    public Image addImage(@RequestParam("file")MultipartFile file) throws IOException {
+        Image img = new Image();
+
+        String uploadDir = "images/";
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        img.setUrl(fileName);
+        //img.setBien(bien);
+
+        imageRepository.save(img);
+
+        FileUploadUtil.saveFile(uploadDir, fileName, file);
+
+        return img;
+    }
 
     
 
