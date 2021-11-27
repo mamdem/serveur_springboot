@@ -28,8 +28,5 @@ public class Bien{
 	private Date date;
 	private Long nbpiece;
 	private String categorie;
-
-	@ManyToOne
-	@JoinColumn(name = "idpers")
-	private Personne personne;
+	private Long idpers;
 }

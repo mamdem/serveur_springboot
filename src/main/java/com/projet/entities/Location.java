@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -23,13 +22,6 @@ public class Location{
 	private Date dateFin;
 	private boolean etat;
 
-	@ManyToOne
-	@JoinColumn(name = "idpers")
-	private Personne personne;
-	
-	@ManyToOne
-	@JoinColumn(name = "idbiens")
-	private Bien bien;
-
-
+	private Integer idpers;
+	private Integer idbiens;
 }

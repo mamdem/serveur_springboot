@@ -13,8 +13,12 @@ import java.util.List;
 @RepositoryRestResource
 public interface IBien extends JpaRepository<Bien,Long > {
     @RestResource
-    @Query(value = "SELECT * FROM `bien` WHERE idpers=:id", nativeQuery = true)
+    @Query(value = "SELECT *  FROM `bien` WHERE idpers=:id", nativeQuery = true)
     List<Bien> getBienByIdpers (@Param("id") Long id);
+
+    @RestResource
+    @Query(value = "SELECT b.idbiens FROM `bien` b , location l WHERE b.idpers=:id", nativeQuery = true)
+    List<Object> getBienLocationByIdpers (@Param("id") Long id);
 
     Bien getBienByIdbiens(Long idbien);
 }

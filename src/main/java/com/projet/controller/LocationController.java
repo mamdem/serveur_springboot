@@ -7,6 +7,8 @@ import com.projet.entities.Personne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 public class LocationController {
     @Autowired
@@ -19,9 +21,13 @@ public class LocationController {
         return locationRepo.findAll();
     }
 
-    @PostMapping("/addLocation")
-
+    @PostMapping("/location/add")
     public Location addLocation(@RequestBody Location l){
         return locationRepo.save(l);
+    }
+
+    @GetMapping(path = "/location/{idloc}")
+    public Optional<Location> getPersonneById (@PathVariable("idloc") Integer idloc){
+        return locationRepo.findById(idloc);
     }
 }

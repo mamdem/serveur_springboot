@@ -30,6 +30,11 @@ public class BienController {
         return bienRepo.getBienByIdpers(idpers);
     }
 
+    @GetMapping("/bien/getBienLocByIdpers")
+    public List<Object> getBienLocByIdpers(@RequestParam Long idpers){
+        return bienRepo.getBienLocationByIdpers(idpers);
+    }
+
     @GetMapping("bien/getBienByIdbiens")
     public Bien getBienByIdbiens(@RequestParam Long idbiens){
         return bienRepo.getBienByIdbiens(idbiens);
